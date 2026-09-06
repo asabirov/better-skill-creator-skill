@@ -9,7 +9,7 @@ Create and maintain independently owned skills that encode the owner's requireme
 
 ## Simplicity and boundaries
 
-Keep the skill as simple as possible while preserving its intended outcome and essential constraints. Let the model choose how to achieve the goal. Add steps, scripts, supporting files, or dependencies only when they solve a demonstrated problem. Ask what can be removed without weakening results.
+Keep the skill as simple as possible while preserving its intended outcome and essential constraints. Let the model choose how to achieve the goal. Add steps, scripts, supporting files, or dependencies only when they solve a demonstrated problem. Ask what can be removed without weakening results. When simplifying, consolidate repeated requirements and redundant examples before shortening sentences.
 
 A skill is for reusable knowledge or preferences that improve relevant behavior. It is not a home for every lesson, general agent policy, task history, or speculative infrastructure. Inspect existing skills and ownership before creating another; prefer a focused edit when it belongs to an existing skill.
 
