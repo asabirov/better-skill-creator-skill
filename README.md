@@ -1,2 +1,48 @@
-# skill-authoring-skill
-Create and maintain simple agent skills under the owner’s rules.
+# Skill authoring
+
+Create and maintain simple agent skills under the owner's rules. The authoring standard lives in [SKILL.md](SKILL.md); change it through this repository's issues and pull requests.
+
+This is an independent skill named `skill-authoring`, so bundled `skill-creator` files remain separately maintainable. It requires an agent supporting the [Agent Skills format](https://agentskills.io/specification). There are no runtime packages or scripts. Git and authenticated access to this private repository are needed to install; GitHub access is needed for delivery work.
+
+## Install
+
+Clone into a durable location with the folder name `skill-authoring`. The commands below use the current directory; choose that location before running them. Obtain the reviewed commit from the merged PR you want to install and replace `REVIEWED_COMMIT` with its full SHA.
+
+```sh
+git clone https://github.com/asabirov/skill-authoring-skill.git skill-authoring
+git -C skill-authoring checkout --detach REVIEWED_COMMIT
+```
+
+Link that checkout into your agent's skill directory. For Codex with its default configuration:
+
+```sh
+mkdir -p "$HOME/.codex/skills"
+ln -s "$PWD/skill-authoring" "$HOME/.codex/skills/skill-authoring"
+```
+
+For Claude Code, use `$HOME/.claude/skills/skill-authoring` instead. Respect a custom skill directory if configured. Inspect an existing destination before changing it; do not overwrite another installation. Configuration repositories can instead consume this repository at `skills/skill-authoring` as a pinned Git submodule and expose that checkout.
+
+## Use and verify
+
+Start a fresh agent session and explicitly invoke `$skill-authoring` in Codex or `/skill-authoring` in Claude Code. For example:
+
+> Use skill-authoring to create a skill for our internal release notes. Group changes by user impact and include migration actions only when needed. Keep it simple.
+
+Confirm the agent reads this installation's `SKILL.md`. Also try an ordinary authoring request without naming it and inspect which skill loads. Other creator skills can compete for discovery; explicit invocation selects this one. Adjust overlapping exposure only deliberately, without editing vendor files.
+
+Use the scenarios in [verification.md](verification.md) to assess behavior. A valid file or successful load alone does not prove useful output.
+
+## Update, rollback, remove
+
+Record the current revision with `git -C skill-authoring rev-parse HEAD`. Fetch updates, then detach at the newly reviewed commit:
+
+```sh
+git -C skill-authoring fetch origin
+git -C skill-authoring checkout --detach REVIEWED_COMMIT
+```
+
+Rollback by checking out the recorded previous SHA. For submodule installations, update or revert the pin through the configuration repository's PR workflow. Keep the installed checkout free of local edits, and verify again in a fresh session.
+
+To remove a symlink installation, first confirm it is a symlink to this checkout, then unlink that skill entry. Retain the checkout until recovery is no longer needed. Removing a managed submodule also requires a configuration PR. Remove all agent exposure entries you installed.
+
+Maintenance cadence and authoring requirements are defined in [SKILL.md](SKILL.md). Record audits in repository issues; this skill does not schedule itself or store execution state.
