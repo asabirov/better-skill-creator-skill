@@ -15,7 +15,7 @@ A skill is for reusable knowledge or preferences that improve relevant behavior.
 
 ## Authoring rules
 
-- State a concise purpose and likely exclusions. Give the skill a distinct name and a precise activation description that differentiates it from overlapping skills.
+- State a concise purpose and likely exclusions. Give the skill a distinct name and a precise activation description that differentiates it from overlapping skills. Match frontmatter `name` to the containing skill directory; the remote repository may use the `-skill` suffix.
 - Write outcomes, essential constraints, and useful decision criteria first. Specify exact steps only when sequence or precision matters. Omit generic advice the model already knows. Keep each requirement in one authoritative place.
 - Use `SKILL.md` with standard `name` and `description` frontmatter for agent instructions, and `README.md` for human usage, installation and updates at a reviewed revision, rollback, and removal. Add supporting files only when needed; explain when to load each reference. Use Mermaid when it clarifies meaningful decisions, handoffs, or states, without creating a second requirements document.
 - Treat the installed skill directory as read-only during execution. Put logs, caches, progress, and temporary output outside it. Declare any necessary external persistent state and its location. Source edits belong in the repository workflow.
