@@ -1,9 +1,9 @@
 ---
-name: skill-authoring
+name: better-skill-creator
 description: Create, edit, simplify, or audit independently owned agent skills under the owner's authoring rules. Use when the user wants their own skill, changes to its instructions, or a skill maintenance review. Not for merely installing an existing skill or changing general agent policy.
 ---
 
-# Skill authoring
+# Better skill creator
 
 Create and maintain independently owned skills that encode the owner's requirements with minimal instructions and dependencies, verified through realistic use.
 
