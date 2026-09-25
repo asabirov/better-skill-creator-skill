@@ -1,33 +1,37 @@
 ---
 name: better-skill-creator
-description: Create, edit, simplify, or audit independently owned agent skills under the owner's authoring rules. Use when the user wants their own skill, changes to its instructions, or a skill maintenance review. Not for merely installing an existing skill or changing general agent policy.
+description: Create, edit, simplify, or audit an independently owned agent skill under the owner's rules. Use for changing or reviewing a skill the user owns. Not for installing a skill or for general agent policy.
 ---
 
 # Better skill creator
 
-Create and maintain independently owned skills that encode the owner's requirements with minimal instructions and dependencies, verified through realistic use.
+Capture the owner's rules in as few words as possible, and check them by real use.
 
-## Simplicity and boundaries
+## Keep it simple
 
-Keep the skill as simple as possible while preserving its intended outcome and essential constraints. Let the model choose how to achieve the goal. Add steps, scripts, supporting files, or dependencies only when they solve a demonstrated problem. Ask what can be removed without weakening results. When simplifying, consolidate repeated requirements and redundant examples before shortening sentences.
+Keep each skill as simple as possible without losing its goal or must-keep rules. Let the model choose how to get there; add a step, script, or file only when needed, and say when to load it. Simplify by merging repeats first, then ask what can be removed without weakening the result.
 
-A skill is for reusable knowledge or preferences that improve relevant behavior. It is not a home for every lesson, general agent policy, task history, or speculative infrastructure. Inspect existing skills and ownership before creating another; prefer a focused edit when it belongs to an existing skill.
+A skill holds reusable knowledge or preferences — not every lesson, policy, task history, or unneeded infrastructure. Before creating one, check if an existing skill covers this and who owns it, then edit that instead.
 
-## Authoring rules
+## Write it
 
-- State a concise purpose and likely exclusions. Give the skill a distinct name and a precise activation description that differentiates it from overlapping skills. Match frontmatter `name` to the containing skill directory; the remote repository may use the `-skill` suffix.
-- Write outcomes, essential constraints, and useful decision criteria first. Specify exact steps only when sequence or precision matters. Omit generic advice the model already knows. Keep each requirement in one authoritative place.
-- Use `SKILL.md` with standard `name` and `description` frontmatter for agent instructions, and `README.md` for human usage, installation and updates at a reviewed revision, rollback, and removal. Add supporting files only when needed; explain when to load each reference. Use Mermaid when it clarifies meaningful decisions, handoffs, or states, without creating a second requirements document.
-- Treat the installed skill directory as read-only during execution. Put logs, caches, progress, and temporary output outside it. Declare any necessary external persistent state and its location. Source edits belong in the repository workflow.
-- Prefer available tools and minimal dependencies. Add a dependency when its reliability or avoided implementation and maintenance cost justifies it; declare it explicitly. Avoid dependencies on another skill's internal files or machine-specific paths.
-- Keep personal data and secrets out of instructions, examples, fixtures, and committed results. Use synthetic examples and runtime configuration. Skill instructions grant no extra permissions; define stopping and recovery behavior where external changes make it necessary.
+- State a clear purpose and exclusion, with a name and description that don't overlap other skills. Match the frontmatter name to the skill's folder; the shared repo may add `-skill`.
+- Lead with outcomes, must-keep rules, and decision criteria — skip steps unless order or precision matters, and skip advice the model knows. State each rule once, in one place across SKILL.md, README.md, and verification.md.
+- `SKILL.md` holds agent instructions; `README.md` holds human usage, install, update, rollback, and removal steps. Use Mermaid only for a real decision, handoff, or set of states, never as a second rulebook.
+- Treat the installed folder as read-only; keep logs, caches, and other output outside it. If the skill must remember something between runs, say what and where, and edit source through the repo's workflow.
+- Prefer existing tools; add a dependency only when it's more reliable or saves more build-and-maintain work than doing it yourself, and say so. Don't depend on another skill's files or machine-specific paths.
+- Keep personal data and secrets — including the owner's name — out of instructions, examples, test data, and commits; use roles, made-up examples, or runtime settings instead. Skill instructions grant no extra permission; say how it should stop and recover when something outside it changes.
 
-## Verification and delivery
+## Check for personal data before delivery
 
-Scale verification to the behavior and risk, without test quotas. Unit tests belong only to deterministic script code; check instructions and model output by behavioral trial: realistic outcomes, intended activation, and nearby requests that should not activate the skill. For substantive changes, compare behavior with the prior version or without the skill; inspect unnecessary actions as well as final output. Keep reusable checks with the skill, and run artifacts outside the installed package. See [verification.md](verification.md) when verifying this authoring skill.
+Before delivery and during audits, author and reviewer each search the whole skill for the owner's names and aliases (for example `rg -n -i -F -e "$owner_name" -- "$skill_dir"`, using real, non-empty values, including hidden and ignored files). Check every match and read for other personal data — finding nothing isn't proof. Replace any name found with a role or runtime setting, search again, and report what you checked and found, without committing the data itself.
 
-Respect the requested scope: a local draft or audit does not authorize publication or installation. For delivery, each skill has its own private-by-default `<skill>-skill` repository. Claim the issue before editing. Deliver through issue → PR → behavioral checks → independent review → merge → pinned install → target verification. Resolve findings before merging. If another model is unavailable, disclose it and use the strongest available independent review. Configuration repositories consume pinned submodules. Verify the installed revision and discovery in the target agent; preserve a rollback path. Completion means the intended outcome works there.
+## Verify the skill
 
-## Maintenance
+Match how much you check to the stakes, not a fixed count. Unit-test only script code that behaves the same way every time; check instructions and model output with real requests — judge the result, confirm it fires when it should, and stays quiet on look-alikes. For a bigger change, compare against the old version or no skill, watching for extra actions, not just final output. Keep reusable checks with the skill; run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks.
 
-Audit every three months and after relevant model or tool changes or observed failures. Prefer removal and simplification backed by behavior checks. Every nine months, reassess from first principles whether to retain, simplify, rewrite, merge, or retire the skill. Recommend a rewrite when evidence supports it, not solely because time passed. Keep review dates and evidence in GitHub, outside the installed package.
+A draft or audit doesn't authorize publishing or installing it. To deliver: claim the issue, open a PR, run the checks above, get an independent review, fix every finding, merge, install at a pinned revision, then verify it in the target agent. If no other model can review, say so and use the best available. Each skill lives in its private-by-default `<skill>-skill` repo; a configuration repo pins it as a submodule. After delivery, confirm the target agent finds and runs the expected revision, and keep a way to roll back — it isn't done until it works there.
+
+## Maintain it
+
+Review each skill every three months, and after any model or tool change or failure. Favor cutting and simplifying, backed by a behavior check, over adding. Every nine months, ask from scratch whether to keep, simplify, rewrite, merge, or retire it — base a rewrite on evidence, not elapsed time. Keep review dates and evidence in GitHub, outside the installed skill.
