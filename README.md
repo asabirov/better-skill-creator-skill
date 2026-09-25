@@ -6,21 +6,23 @@ This skill is separate from the bundled `skill-creator`, so each stays separatel
 
 ## Install
 
-Clone it somewhere durable, into a folder named `better-skill-creator`; the commands below assume you're already there. Get the full commit SHA from the merged PR you want, and use it as `REVIEWED_COMMIT`.
+The version source is `metadata.version` in [SKILL.md](SKILL.md). The first release is pending; these instructions apply once its matching tag and GitHub release exist.
+
+Use the authenticated `the owner's configuration repo` checkout, which manages this private skill at `skills/better-skill-creator`. From that checkout, initialize its recorded pin:
 
 ```sh
-git clone https://github.com/asabirov/better-skill-creator-skill.git better-skill-creator
-git -C better-skill-creator checkout --detach REVIEWED_COMMIT
+git submodule update --init -- skills/better-skill-creator
+git -C skills/better-skill-creator rev-parse HEAD
 ```
 
-Link that checkout into your agent's skills folder. For Codex, with default settings:
+Confirm the pin is exactly the selected release's commit. Preserve the existing agent links; if a link is missing, expose this submodule in the agent's configured skills folder under `better-skill-creator`. For Codex with default settings, from the `the owner's configuration repo` root:
 
 ```sh
 mkdir -p "$HOME/.codex/skills"
-ln -s "$PWD/better-skill-creator" "$HOME/.codex/skills/better-skill-creator"
+ln -s "$PWD/skills/better-skill-creator" "$HOME/.codex/skills/better-skill-creator"
 ```
 
-For Claude Code, use `$HOME/.claude/skills/better-skill-creator` instead, or your configured skills folder. Check what's there before you change it; don't overwrite another install. A configuration repo can instead pin this repo at `skills/better-skill-creator` as a Git submodule and expose that checkout.
+For Claude Code, use `$HOME/.claude/skills/better-skill-creator` instead, or your configured skills folder. Check what's there before you change it; don't overwrite another install.
 
 ## Use and check it
 
@@ -34,15 +36,16 @@ Use the cases in [verification.md](verification.md) to judge the result. A file 
 
 ## Update, roll back, remove
 
-Note the current revision: `git -C better-skill-creator rev-parse HEAD`. To update, fetch and check out the newly reviewed commit:
+Record the current SHA with `git -C skills/better-skill-creator rev-parse HEAD`. Advance the pin through a `the owner's configuration repo` PR only to a reviewed GitHub release. Replace `RELEASE_TAG` below with that release's tag, and confirm its version agrees with `SKILL.md` at the selected commit:
 
 ```sh
-git -C better-skill-creator fetch origin
-git -C better-skill-creator checkout --detach REVIEWED_COMMIT
+git -C skills/better-skill-creator fetch origin --tags
+git -C skills/better-skill-creator checkout --detach RELEASE_TAG
+git -C skills/better-skill-creator rev-parse HEAD
 ```
 
-To roll back, check out the SHA you noted earlier. For a submodule install, change the pin through the configuration repo's PR. Keep the installed checkout free of local edits, and re-check it in a fresh session after any change.
+To roll back, restore the previous SHA through a `the owner's configuration repo` PR, preserving any pin hold so reconciliation doesn't undo the rollback. Keep the installed checkout free of local edits, and re-check it in a fresh session after any change.
 
-Before removing a symlink install, confirm it's really a symlink to this checkout, then unlink it. Keep the checkout until you no longer need it for recovery. Removing a submodule install also needs a PR in the configuration repo. Remove every place you exposed this skill to an agent.
+To remove it, confirm each agent link points to this submodule before unlinking it. Remove the submodule through a `the owner's configuration repo` PR; retain the previous pin for recovery.
 
 Maintenance cadence and authoring rules live in [SKILL.md](SKILL.md). Record audits as issues in this repo — this skill doesn't schedule itself or keep its own run state.
