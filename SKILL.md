@@ -9,7 +9,7 @@ Capture the owner's rules in as few words as possible, and check them by real us
 
 ## Keep it simple
 
-Keep each skill as simple as possible without losing its goal or must-keep rules. Let the model choose how to get there; add a step, script, or file only when needed, and say when to load it. Simplify by merging repeats first, then ask what can be removed without weakening the result.
+Keep each skill as simple as possible without losing its goal or must-keep rules. Let the model choose how to get there; add a step, script, or file only when needed, and say when to load it. To fix a failure, first try rewriting or removing existing text. Merge repeats; new rules must replace or merge with existing ones, or the PR must explain why they can't.
 
 A skill holds reusable knowledge or preferences — not every lesson, policy, task history, or unneeded infrastructure. Before creating one, check if an existing skill covers this and who owns it, then edit that instead.
 
@@ -28,10 +28,10 @@ Before delivery and during audits, author and reviewer each search the whole ski
 
 ## Verify the skill
 
-Match how much you check to the stakes, not a fixed count. Unit-test only script code that behaves the same way every time; check instructions and model output with real requests — judge the result, confirm it fires when it should, and stays quiet on look-alikes. For a bigger change, compare against the old version or no skill, watching for extra actions, not just final output. Keep reusable checks with the skill; run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks.
+Match how much you check to the stakes, not a fixed count. Unit-test only script code that behaves the same way every time; check instructions and model output with real requests — judge the result, confirm it fires when it should, and stays quiet on look-alikes. For a bigger change, compare against the old version or no skill, watching for extra actions, not just final output. Keep reusable checks with the skill; run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks. Each PR reports word counts before and after; growth needs behavioral evidence that the added text changes results.
 
-A draft or audit doesn't authorize publishing or installing it. To deliver: claim the issue, open a PR, run the checks above, get an independent review, fix every finding, merge, install at a pinned revision, then verify it in the target agent. If no other model can review, say so and use the best available. Each skill lives in its private-by-default `<skill>-skill` repo; a configuration repo pins it as a submodule. After delivery, confirm the target agent finds and runs the expected revision, and keep a way to roll back — it isn't done until it works there.
+A draft or audit doesn't authorize publishing or installing it. To deliver: claim the issue, open a PR, run the checks above, get an independent review answering “what here can be removed or merged?”, fix every finding, merge, install at a pinned revision, then verify it in the target agent. If no other model can review, say so and use the best available. Each skill lives in its private-by-default `<skill>-skill` repo; a configuration repo pins it as a submodule. After delivery, confirm the target agent finds and runs the expected revision, and keep a way to roll back — it isn't done until it works there.
 
 ## Maintain it
 
-Review each skill every three months, and after any model or tool change or failure. Favor cutting and simplifying, backed by a behavior check, over adding. Every nine months, ask from scratch whether to keep, simplify, rewrite, merge, or retire it — base a rewrite on evidence, not elapsed time. Keep review dates and evidence in GitHub, outside the installed skill.
+Review each skill every three months, and after any model or tool change or failure. Every nine months, ask from scratch whether to keep, simplify, rewrite, merge, or retire it — base a rewrite on evidence, not elapsed time. Keep review dates and evidence in GitHub, outside the installed skill.
