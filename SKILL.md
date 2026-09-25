@@ -30,11 +30,11 @@ Before delivery and during audits, author and reviewer each search the whole ski
 
 ## Version and install it
 
-On creation or audit, check visibility, versions, and release setup. Preserve existing versions and automation, including intentional package-version placeholders. For unversioned skills, start at `0.1.0`. Document one version source in the README; default to a quoted `metadata.version` in [Agent Skills frontmatter](https://agentskills.io/specification#metadata). Apply [SemVer](https://semver.org/spec/v2.0.0.html) to the documented skill contract: patch for fixes, minor for compatible capabilities, major for breaking activation, dependencies, output, or workflow. Extend existing release automation to stamp/check the version source rather than adding a second process.
+On creation or audit, check visibility and release setup. Preserve existing versions, automation, and intentional package-version placeholders; start unversioned skills at `0.1.0`. Document one version source in the README, defaulting to quoted `metadata.version` in [Agent Skills frontmatter](https://agentskills.io/specification#metadata). Apply [SemVer](https://semver.org/spec/v2.0.0.html) to the skill contract: patch for fixes, minor for compatible capabilities, major for breaking activation, dependencies, output, or workflow. Extend automation to stamp/check that source; don't add a second process.
 
-After authorized merge and release, the reviewed commit must have an immutable `vMAJOR.MINOR.PATCH` tag and matching GitHub release with concise change and migration notes. Check that the version source at that commit, tag, and release agree; never move a published tag. An unchanged, already released skill needs no new release. Report missing authorization or release evidence instead of claiming delivery.
+After authorized merge and release, the reviewed commit needs an immutable `vMAJOR.MINOR.PATCH` tag and matching GitHub release with concise change and migration notes. Verify the version source at that commit agrees with both; never move published tags. Unchanged released skills need no new release. Report missing authorization or release evidence instead of claiming delivery.
 
-For a public repo, write one README install line for both agents, using the actual repo, skill name, and released tag. Illustrative form from the [skills CLI](https://github.com/vercel-labs/skills#readme) and its [ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts):
+For public repos, write one README install line for both agents using the actual repo, skill, and released tag. Don't run it over a skill already installed through the owner's managed configuration. Illustrative [skills CLI](https://github.com/vercel-labs/skills#readme) form ([ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts)):
 
 ```sh
 DO_NOT_TRACK=1 npx skills add https://github.com/OWNER/REPO/tree/TAG --skill SKILL --agent claude-code codex --global
@@ -42,7 +42,7 @@ DO_NOT_TRACK=1 npx skills add https://github.com/OWNER/REPO/tree/TAG --skill SKI
 
 Explain the [telemetry opt-out](https://github.com/vercel-labs/skills#telemetry), Node/npm and Git prerequisites, and each skill's runtime needs. For updates or rollback, reinstall the chosen release; don't promise that `skills update` follows tags. Don't advertise an unreleased tag as installable.
 
-Private repos need version/release details and their authenticated `claude-2` submodule path, not public installer docs. Keep existing mappings; advance pins through configuration PRs only to released tag commits, preserving the old SHA for rollback. Verify the installed commit, not just its nearby tag.
+Private repos need version/release details, not public installer docs. Document the authenticated submodule path in the owner's configuration repo if it pins the skill; don't add pins automatically. Advance existing pins through configuration PRs only to released tag commits, preserving the old SHA for rollback. Verify installed commits, not nearby tags.
 
 ## Verify the skill
 
