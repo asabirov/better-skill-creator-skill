@@ -1,6 +1,8 @@
 ---
 name: better-skill-creator
 description: Create, edit, simplify, or audit an independently owned agent skill under the owner's rules. Use for changing or reviewing a skill the user owns. Not for installing a skill or for general agent policy.
+metadata:
+  version: "0.1.0"
 ---
 
 # Better skill creator
@@ -26,11 +28,27 @@ A skill holds reusable knowledge or preferences — not every lesson, policy, ta
 
 Before delivery and during audits, author and reviewer each search the whole skill for the owner's names and aliases (for example `rg -n -i -F -e "$owner_name" -- "$skill_dir"`, using real, non-empty values, including hidden and ignored files). Check every match and read for other personal data — finding nothing isn't proof. Replace any name found with a role or runtime setting, search again, and report what you checked and found, without committing the data itself.
 
+## Version and install it
+
+On creation or audit, check visibility and release setup. Preserve existing versions, automation, and intentional package-version placeholders; start unversioned skills at `0.1.0`. Document one version source in the README, defaulting to quoted `metadata.version` in [Agent Skills frontmatter](https://agentskills.io/specification#metadata). Apply [SemVer](https://semver.org/spec/v2.0.0.html) to the skill contract: patch for fixes, minor for compatible capabilities, major for breaking activation, dependencies, output, or workflow. Extend automation to stamp/check that source; don't add a second process.
+
+After authorized merge and release, the reviewed commit needs an immutable `vMAJOR.MINOR.PATCH` tag and matching GitHub release with concise change and migration notes. Verify the version source at that commit agrees with both; never move published tags. Unchanged released skills need no new release. Report missing authorization or release evidence instead of claiming delivery.
+
+For public repos, write one README install line for both agents using the actual repo, skill, and released tag. Don't run it over a skill already installed through the owner's managed configuration. Illustrative [skills CLI](https://github.com/vercel-labs/skills#readme) form ([ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts)):
+
+```sh
+DO_NOT_TRACK=1 npx skills add https://github.com/OWNER/REPO/tree/TAG --skill SKILL --agent claude-code codex --global
+```
+
+Explain the [telemetry opt-out](https://github.com/vercel-labs/skills#telemetry), Node/npm and Git prerequisites, and each skill's runtime needs. For updates or rollback, reinstall the chosen release; don't promise that `skills update` follows tags. Don't advertise an unreleased tag as installable.
+
+Private repos need version/release details, not public installer docs. Document the authenticated submodule path in the owner's configuration repo if it pins the skill; don't add pins automatically. Advance existing pins through configuration PRs only to released tag commits, preserving the old SHA for rollback. Verify installed commits, not nearby tags.
+
 ## Verify the skill
 
 Match how much you check to the stakes, not a fixed count. Unit-test only script code that always behaves the same way. Check instructions and model output with real requests: judge the result, confirm it fires when it should, and stays quiet on look-alikes. When a description changes, test a handful of likely phrasings, a few tries each, and note which ones route to the skill. Before the text claims it saves, enforces, or persists something, confirm the runtime can actually reach that mechanism. For a bigger change, compare against the old version or no skill, watching for extra actions, not just final output. Keep reusable checks with the skill; run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks. Each PR reports word counts before and after; growth needs evidence that the added text changes behavior.
 
-A draft or audit doesn't authorize publishing or installing it. To deliver: claim the issue, open a PR, run the checks above, get an independent review answering “what here can be removed or merged?”, fix every finding, merge, install at a pinned revision, then verify it in the target agent. If no other model can review, say so and use the best available. Each skill lives in its private-by-default `<skill>-skill` repo; a configuration repo pins it as a submodule. After delivery, confirm the target agent finds and runs the expected revision, and keep a way to roll back — it isn't done until it works there.
+A draft or audit doesn't authorize publishing or installing it. To deliver: claim the issue, open a PR, run the checks above, get an independent review answering “what here can be removed or merged?”, fix every finding, merge, release, install the released revision, then verify it in the target agent. If no other model can review, say so and use the best available. Each skill lives in its private-by-default `<skill>-skill` repo. After delivery, confirm the target agent finds and runs the expected revision — it isn't done until it works there.
 
 ## Maintain it
 
