@@ -31,12 +31,12 @@ Before delivery and during audits, author and reviewer each search the whole ski
 Unit-test only script code that always behaves the same way. Test everything else with real requests in fresh sessions, with the target agent's full skill set installed, and repeat each request. Scale the evidence to the stakes, but delivery needs three passing proofs, recorded in the PR:
 
 1. **Works well:** on realistic tasks, it performs at least as well as no skill or the previous version, including extra actions, preferably with blind grading.
-2. **No collisions:** its own requests load it; similar requests load their owner. Compare descriptions and remove overlapping triggers.
-3. **No context contamination:** run the same unrelated tasks with and without the skill. Correctness, extra actions and loaded files must match, and the skill and its on-demand files must stay unloaded.
+2. **No collisions:** its requests load it; similar requests load their intended owner.
+3. **No context contamination:** run the same unrelated tasks with and without the skill. Correctness must be equivalent, with no extra actions or file loads caused by the skill, including the skill itself and its on-demand files.
 
-A failed or unclear proof blocks delivery; state this in the PR. Before claiming that the text saves, enforces or persists something, confirm that the runtime can reach that mechanism. Keep reusable checks with the skill; keep run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks. Each PR reports word counts before and after; growth needs evidence that the added text changes behavior.
+A failed or unclear proof blocks delivery; state this in the PR. Before claiming that the text saves, enforces or persists something, confirm that the runtime can reach that mechanism. Keep reusable checks with the skill. See [verification.md](verification.md) for this skill's checks. Each PR reports word counts before and after; growth needs evidence that the added text changes behavior.
 
-A draft or audit doesn't authorize publishing or installing it. To deliver: claim the issue, open a PR, pass the three proofs above, get an independent review answering “what here can be removed or merged?”, fix every finding, merge, install at a pinned revision, then verify it in the target agent. If no other model can review, say so and use the best available. Each skill lives in its private-by-default `<skill>-skill` repo; a configuration repo pins it as a submodule. After delivery, confirm the target agent finds and runs the expected revision, and keep a way to roll back — it isn't done until it works there.
+A draft or audit doesn't authorize publishing or installing it. To deliver: claim the issue, open a PR, pass the three proofs above, get an independent review answering “what here can be removed or merged?”, fix every finding, merge, then install at a pinned revision. If no other model can review, say so and use the best available. Each skill lives in its private-by-default `<skill>-skill` repo; a configuration repo pins it as a submodule. After delivery, confirm the target agent finds and runs the expected revision, and keep a way to roll back — it isn't done until it works there.
 
 ## Maintain it
 
