@@ -1,6 +1,6 @@
 ---
 name: better-skill-creator
-description: Create, edit, simplify, or audit an independently owned agent skill under the owner's rules. Use for changing or reviewing a skill the user owns. Not for installing a skill or for general agent policy.
+description: Create, edit, simplify, or audit an independently owned agent skill under the owner's rules. Use for changing, reviewing, or delivering a skill the user owns. Not for installing a skill or for general agent policy.
 ---
 
 # Better skill creator
