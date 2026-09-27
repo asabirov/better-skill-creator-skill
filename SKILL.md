@@ -28,9 +28,15 @@ Before delivery and during audits, author and reviewer each search the whole ski
 
 ## Verify the skill
 
-Match how much you check to the stakes, not a fixed count. Unit-test only script code that always behaves the same way. Check instructions and model output with real requests: judge the result, confirm it fires when it should, and stays quiet on look-alikes. When a description changes, test a handful of likely phrasings, a few tries each, and note which ones route to the skill. Before the text claims it saves, enforces, or persists something, confirm the runtime can actually reach that mechanism. For a bigger change, compare against the old version or no skill, watching for extra actions, not just final output. Keep reusable checks with the skill; run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks. Each PR reports word counts before and after; growth needs evidence that the added text changes behavior.
+Every delivered skill needs three proofs in the PR. Evidence may match the risk, but none of the three proofs may be skipped. Unit-test only script code with predictable behavior. Test everything else with real requests in fresh sessions, repeating each routing request.
 
-A draft or audit doesn't authorize publishing or installing it. To deliver: claim the issue, open a PR, run the checks above, get an independent review answering “what here can be removed or merged?”, fix every finding, merge, install at a pinned revision, then verify it in the target agent. If no other model can review, say so and use the best available. Each skill lives in its private-by-default `<skill>-skill` repo; a configuration repo pins it as a submodule. After delivery, confirm the target agent finds and runs the expected revision, and keep a way to roll back — it isn't done until it works there.
+1. **Works well:** run realistic tasks with and without the skill, or with its previous version. Compare the results, preferably with a grader that does not know which run is which. Check extra actions as well as the final output.
+2. **No collisions:** with the target agent's full skill set installed, confirm that the skill's own requests load it, while similar requests owned by other skills load their owner instead. Compare descriptions and remove overlapping triggers.
+3. **No context contamination:** on unrelated tasks, confirm that the installed skill does not load and that results stay the same. Files loaded only when needed must stay unloaded on tasks that do not need them.
+
+Before claiming that text saves, enforces, or persists something, confirm that the runtime can reach that mechanism. Keep reusable checks with the skill and run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks. Each PR reports word counts before and after; added text needs evidence that it changes behavior.
+
+A draft or audit does not authorize publishing or installation. To deliver, claim the issue, open a PR, record the three proofs, get an independent review answering “what here can be removed or merged?”, fix every finding, merge, install at a pinned revision, and verify it in the target agent. If no other model can review, say so and use the best available option. Each skill lives in its private-by-default `<skill>-skill` repo; a configuration repo pins it as a submodule. After delivery, confirm that the target agent finds and runs the expected revision, and keep a rollback path. It is not done until it works there.
 
 ## Maintain it
 
