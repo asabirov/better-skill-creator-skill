@@ -42,7 +42,7 @@ DO_NOT_TRACK=1 npx skills add https://github.com/OWNER/REPO/tree/TAG --skill SKI
 
 Explain the [telemetry opt-out](https://github.com/vercel-labs/skills#telemetry), Node/npm and Git prerequisites, and each skill's runtime needs. For updates or rollback, reinstall the chosen release; don't promise that `skills update` follows tags. Don't advertise an unreleased tag as installable.
 
-Private repos need version/release details and authenticated installation instructions. If a configuration repo pins the skill as a submodule, document that path; don't add pins automatically. Advance those pins through configuration PRs only to released tag commits, preserving the old SHA for rollback. Verify installed commits, not nearby tags.
+Private repos need version/release details, not public installer docs. If a configuration repo pins the skill as a submodule, document that authenticated path; don't add pins automatically. Advance those pins through configuration PRs only to released tag commits, preserving the old SHA for rollback. Verify installed commits, not nearby tags.
 
 ## Verify the skill
 
