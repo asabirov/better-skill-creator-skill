@@ -1,6 +1,7 @@
 # Better skill creator
 
-Create and maintain simple agent skills under the owner’s rules.
+Create and maintain simple agent skills using the opinionated rules in
+[SKILL.md](SKILL.md). Adopt them as written or adapt them to your workflow.
 
 This skill keeps authoring instructions short, checks them through real use,
 and documents installation and recovery. It stays separate from the bundled
