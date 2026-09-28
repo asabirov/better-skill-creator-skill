@@ -22,11 +22,11 @@ A skill holds reusable knowledge or preferences — not every lesson, policy, ta
 - `SKILL.md` holds agent instructions; `README.md` holds human usage, install, update, rollback, and removal steps. Use Mermaid only for a real decision, handoff, or set of states, never as a second rulebook.
 - Treat the installed folder as read-only; keep logs, caches, and other output outside it. If the skill must remember something between runs, say what and where, and edit source through the repo's workflow.
 - Prefer existing tools; add a dependency only when it's more reliable or saves more build-and-maintain work than doing it yourself, and say so. Don't depend on another skill's files or machine-specific paths.
-- Keep personal data and secrets — including the owner's name — out of instructions, examples, test data, and commits; use roles, made-up examples, or runtime settings instead. Skill instructions grant no extra permission; say how it should stop and recover when something outside it changes.
+- Exclude secrets and hard-coded user/install data from instructions, examples, tests, and commits: names, emails, machines, hosts, IPs, accounts, repositories. Use runtime settings, roles, or made-up examples; fixed interface names and documented tool defaults may stay. Instructions grant no permission; explain stopping and recovery from outside changes.
 
-## Check for personal data before delivery
+## Check data before delivery
 
-Before delivery and during audits, author and reviewer each search the whole skill for the owner's names and aliases (for example `rg -n -i -F -e "$owner_name" -- "$skill_dir"`, using real, non-empty values, including hidden and ignored files). Check every match and read for other personal data — finding nothing isn't proof. Replace any name found with a role or runtime setting, search again, and report what you checked and found, without committing the data itself.
+Before delivery and during audits, author and reviewer each search the whole skill, including hidden and ignored files, for known owner aliases and deployment values: `rg -n --hidden --no-ignore -i -F -e "$candidate" -- "$skill_dir"` (non-empty runtime values). Read for unknown literals too; no matches isn't proof. Classify candidates, give borderline values kept a one-line reason, replace violations, and search again. Report coverage and findings without committing real data.
 
 ## Version and install it
 
