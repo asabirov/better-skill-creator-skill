@@ -8,14 +8,14 @@ This skill is separate from the bundled `skill-creator`, so each stays separatel
 
 The version source is `metadata.version` in [SKILL.md](SKILL.md). The first release is pending; these instructions apply once its matching tag and GitHub release exist.
 
-Use the authenticated `claude-2` checkout, which manages this private skill at `skills/better-skill-creator`. From that checkout, initialize its recorded pin:
+Use the authenticated configuration checkout that manages this private skill at `skills/better-skill-creator`. From that checkout, initialize its recorded pin:
 
 ```sh
 git submodule update --init -- skills/better-skill-creator
 git -C skills/better-skill-creator rev-parse HEAD
 ```
 
-Confirm the pin is exactly the selected release's commit. Preserve the existing agent links; if a link is missing, expose this submodule in the agent's configured skills folder under `better-skill-creator`. For Codex with default settings, from the `claude-2` root:
+Confirm the pin is exactly the selected release's commit. Preserve the existing agent links; if a link is missing, expose this submodule in the agent's configured skills folder under `better-skill-creator`. For Codex with default settings, from that checkout’s root:
 
 ```sh
 mkdir -p "$HOME/.codex/skills"
@@ -36,7 +36,7 @@ Use the cases in [verification.md](verification.md) to judge the result. A file 
 
 ## Update, roll back, remove
 
-Record the current SHA with `git -C skills/better-skill-creator rev-parse HEAD`. Advance the pin through a `claude-2` PR only to a reviewed GitHub release. Replace `RELEASE_TAG` below with that release's tag, and confirm its version agrees with `SKILL.md` at the selected commit:
+Record the current SHA with `git -C skills/better-skill-creator rev-parse HEAD`. Advance the pin through a configuration-repository PR only to a reviewed GitHub release. Replace `RELEASE_TAG` below with that release's tag, and confirm its version agrees with `SKILL.md` at the selected commit:
 
 ```sh
 git -C skills/better-skill-creator fetch origin --tags
@@ -44,8 +44,8 @@ git -C skills/better-skill-creator checkout --detach RELEASE_TAG
 git -C skills/better-skill-creator rev-parse HEAD
 ```
 
-To roll back, restore the previous SHA through a `claude-2` PR, preserving any pin hold so reconciliation doesn't undo the rollback. Keep the installed checkout free of local edits, and re-check it in a fresh session after any change.
+To roll back, restore the previous SHA through a configuration-repository PR, preserving any pin hold so reconciliation doesn't undo the rollback. Keep the installed checkout free of local edits, and re-check it in a fresh session after any change.
 
-To remove it, confirm each agent link points to this submodule before unlinking it. Remove the submodule through a `claude-2` PR; retain the previous pin for recovery.
+To remove it, confirm each agent link points to this submodule before unlinking it. Remove the submodule through a configuration-repository PR; retain the previous pin for recovery.
 
 Maintenance cadence and authoring rules live in [SKILL.md](SKILL.md). Record audits as issues in this repo — this skill doesn't schedule itself or keep its own run state.
