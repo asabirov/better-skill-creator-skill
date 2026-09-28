@@ -1,12 +1,11 @@
 name: notify claude-2
 
-# Installed in each tracked skill repository by
-# scripts/rollout_pin_sync_sender.py. A merge to the default branch tells
-# agents-home to move this skill's submodule pin (asabirov/agents-home#197).
-#
-# CLAUDE_2_DISPATCH_TOKEN is a fine-grained PAT with Contents: write on
-# asabirov/agents-home and nothing else. It is not the receiver's PIN_SYNC_TOKEN and
-# needs no access to this repository.
+# OWNER SECTION: managed-install automation; public users can skip this file.
+# This workflow preserves the owner's existing configuration-repository routing.
+# It is not needed to install or run the skill. See README.md's owner section.
+# Installed by scripts/rollout_pin_sync_sender.py in the owner's configuration.
+# CLAUDE_2_DISPATCH_TOKEN has Contents: write only on the destination below;
+# it is distinct from the receiver's PIN_SYNC_TOKEN.
 
 on:
   push:
