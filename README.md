@@ -18,7 +18,7 @@ the skill works. This repository has no runtime packages or scripts.
 | [SKILL.md](SKILL.md) | Rules for authoring, verification and delivery |
 | [verification.md](verification.md) | Trial requests and expected behavior |
 | [README.md](README.md) | Installation, use and recovery |
-| [.github/workflows/notify-the owner's configuration repo.yml](.github/workflows/notify-the owner's configuration repo.yml) | Notification for the owner-managed installation; other users do not need it |
+| [Installation notification workflow](.github/workflows/notify-claude-2.yml) | Notification for the owner-managed installation; other users do not need it |
 
 ## Install and verify
 
