@@ -34,6 +34,23 @@ On creation or audit, check visibility and release setup. Preserve existing vers
 
 After authorized merge and release, the reviewed commit needs an immutable `vMAJOR.MINOR.PATCH` tag and matching GitHub release with concise change and migration notes. Verify the version source at that commit agrees with both; never move published tags. Unchanged released skills need no new release. Report missing authorization or release evidence instead of claiming delivery.
 
+Keep each created or versioned skill's `CHANGELOG.md` readable:
+
+- Use one heading per release: `## <version> — <YYYY-MM-DD>`, or `## Unreleased` before a release.
+- Under the heading, use only non-empty `### Added`, `### Changed`, `### Fixed`, and `### Removed` groups. For a first release, add one plain sentence saying what the skill does and who uses it.
+- Write each entry for the person using the skill: `**<Short name>.** <What is different from the user's side.> <Why it matters or what it prevents.>\n  Action: <what the user must do, or "None.">` Use plain words; explain unavoidable terms in brackets, and omit internal jargon, file paths, and script names unless the user runs them.
+- Check that someone who has never seen the skill can explain what changed and whether they need to act. Do not claim anything the skill does not deliver.
+
+Worked example:
+
+```md
+## 0.2.0 — 2026-09-29
+
+### Added
+- **Release-note guidance.** Skill authors can record user-facing changes in grouped entries with an action line, so readers can understand updates without knowing the implementation.
+  Action: None.
+```
+
 For public repos, write one README install line for both agents using the actual repo, skill, and released tag. Don't run it over a skill already installed through the owner's managed configuration. Illustrative [skills CLI](https://github.com/vercel-labs/skills#readme) form ([ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts)):
 
 ```sh
