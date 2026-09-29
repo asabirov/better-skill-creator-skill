@@ -102,4 +102,4 @@ To remove it, confirm each agent link points to this submodule before unlinking 
 
 Maintenance timing and authoring rules are defined in [SKILL.md](SKILL.md).
 Record audits as issues in this repository; the skill does not schedule itself
-or store run state. No license has been selected.
+or store run state. This repository is licensed under the MIT License.
