@@ -34,6 +34,28 @@ On creation or audit, check visibility and release setup. Preserve existing vers
 
 After authorized merge and release, the reviewed commit needs an immutable `vMAJOR.MINOR.PATCH` tag and matching GitHub release with concise change and migration notes. Verify the version source at that commit agrees with both; never move published tags. Unchanged released skills need no new release. Report missing authorization or release evidence instead of claiming delivery.
 
+Keep each created or versioned skill's `CHANGELOG.md` readable by someone who has never seen the skill:
+
+- Start the file with `# Changelog`. Give each release one heading: `## <version> — <YYYY-MM-DD>`, or `## <version> — Unreleased` until it is released.
+- Under a heading, use only non-empty `### Added`, `### Changed`, `### Fixed` and `### Removed` groups. A first release opens with one plain sentence saying what the skill does and who uses it, and must not say "now", "no longer", or otherwise imply an earlier version.
+- Write each entry as a bold short name, what changed for you, and why it matters or what it prevents, then, only if you must do something, an `Action:` line naming that required step (never a usage tip); address the person using the skill as "you", and describe what the skill or its agent does in the third person. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
+- Test each entry: give it alone to a model with no other context and ask what changed and whether you must act. The answer should match the change.
+
+Worked example, for an illustrative upload skill:
+
+```md
+## 0.2.0 — 2026-09-29
+
+### Changed
+
+- **Sign-in during setup.** You now sign in to GitHub once during setup instead of at your first upload. Uploads no longer stop halfway to ask for a password.
+  Action: Run the setup command again after updating.
+
+### Fixed
+
+- **Large PDFs.** PDFs up to 10 MB now upload instead of timing out.
+```
+
 For public repos, write one README install line for both agents using the actual repo, skill, and released tag. Don't run it over a skill already installed through the owner's managed configuration. Illustrative [skills CLI](https://github.com/vercel-labs/skills#readme) form ([ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts)):
 
 ```sh

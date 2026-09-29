@@ -100,6 +100,7 @@ To roll back, restore the previous SHA through a configuration-repository PR, pr
 
 To remove it, confirm each agent link points to this submodule before unlinking it. Remove the submodule through a configuration-repository PR; retain the previous pin for recovery.
 
-Maintenance timing and authoring rules are defined in [SKILL.md](SKILL.md).
+Maintenance timing, versioning, and the required readable `CHANGELOG.md` format
+are defined in [SKILL.md](SKILL.md), including a worked entry example.
 Record audits as issues in this repository; the skill does not schedule itself
 or store run state. This repository is licensed under the MIT License.
