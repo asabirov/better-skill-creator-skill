@@ -38,7 +38,7 @@ Keep each created or versioned skill's `CHANGELOG.md` readable by someone who ha
 
 - Start the file with `# Changelog`. Give each release one heading: `## <version> — <YYYY-MM-DD>`, or `## <version> — Unreleased` until it is released.
 - Under a heading, use only non-empty `### Added`, `### Changed`, `### Fixed` and `### Removed` groups. A first release opens with one plain sentence saying what the skill does and who uses it, and must not say "now", "no longer", or otherwise imply an earlier version.
-- Write each entry as a bold short name, what changed for you, and why it matters or what it prevents, then `Action:` on the next line with what you must do or "None."; address the reader as "you". `Action:` names a required step, not a usage tip. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
+- Write each entry as a bold short name, what changed for you, and why it matters or what it prevents, then, only if you must do something, an `Action:` line naming that required step (never a usage tip); address the reader as "you". Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
 - Test each entry: give it alone to a model with no other context and ask what changed and whether you must act. The answer should match the change.
 
 Worked example, for an illustrative upload skill:
@@ -54,7 +54,6 @@ Worked example, for an illustrative upload skill:
 ### Fixed
 
 - **Large PDFs.** PDFs up to 10 MB now upload instead of timing out.
-  Action: None.
 ```
 
 For public repos, write one README install line for both agents using the actual repo, skill, and released tag. Don't run it over a skill already installed through the owner's managed configuration. Illustrative [skills CLI](https://github.com/vercel-labs/skills#readme) form ([ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts)):
