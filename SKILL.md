@@ -37,15 +37,8 @@ After authorized merge and release, the reviewed commit needs an immutable `vMAJ
 Keep each created or versioned skill's `CHANGELOG.md` readable by someone who has never seen the skill:
 
 - Start the file with `# Changelog`. Give each release one heading: `## <version> — <YYYY-MM-DD>`, or `## <version> — Unreleased` until it is released.
-- Under a heading, use only non-empty `### Added`, `### Changed`, `### Fixed` and `### Removed` groups. A first release opens with one plain sentence saying what the skill does and who uses it.
-- Write each entry as two lines, addressing the reader as "you":
-
-  ```md
-  - **<Short name>.** <What is different for you now.> <Why it matters or what it prevents.>
-    Action: <What you must do to get this change or keep things working, or "None.">
-  ```
-
-  `Action:` names a required step, not a usage tip. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
+- Under a heading, use only non-empty `### Added`, `### Changed`, `### Fixed` and `### Removed` groups. A first release opens with one plain sentence saying what the skill does and who uses it, and must not say "now", "no longer", or otherwise imply an earlier version.
+- Write each entry as a bold short name, what changed for you, and why it matters or what it prevents, then `Action:` on the next line with what you must do or "None."; address the reader as "you". `Action:` names a required step, not a usage tip. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
 - Test each entry: give it alone to a model with no other context and ask what changed and whether you must act. The answer should match the change.
 
 Worked example, for an illustrative upload skill:
@@ -54,10 +47,12 @@ Worked example, for an illustrative upload skill:
 ## 0.2.0 — 2026-09-29
 
 ### Changed
+
 - **Sign-in during setup.** You now sign in to GitHub once during setup instead of at your first upload. Uploads no longer stop halfway to ask for a password.
   Action: Run the setup command again after updating.
 
 ### Fixed
+
 - **Large PDFs.** PDFs up to 10 MB now upload instead of timing out.
   Action: None.
 ```
