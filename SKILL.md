@@ -34,20 +34,31 @@ On creation or audit, check visibility and release setup. Preserve existing vers
 
 After authorized merge and release, the reviewed commit needs an immutable `vMAJOR.MINOR.PATCH` tag and matching GitHub release with concise change and migration notes. Verify the version source at that commit agrees with both; never move published tags. Unchanged released skills need no new release. Report missing authorization or release evidence instead of claiming delivery.
 
-Keep each created or versioned skill's `CHANGELOG.md` readable:
+Keep each created or versioned skill's `CHANGELOG.md` readable by someone who has never seen the skill:
 
-- Use one heading per release: `## <version> — <YYYY-MM-DD>`, or `## Unreleased` before a release.
-- Under the heading, use only non-empty `### Added`, `### Changed`, `### Fixed`, and `### Removed` groups. For a first release, add one plain sentence saying what the skill does and who uses it.
-- Write each entry for the person using the skill: `**<Short name>.** <What is different from the user's side.> <Why it matters or what it prevents.>\n  Action: <what the user must do, or "None.">` Use plain words; explain unavoidable terms in brackets, and omit internal jargon, file paths, and script names unless the user runs them.
-- Check that someone who has never seen the skill can explain what changed and whether they need to act. Do not claim anything the skill does not deliver.
+- Start the file with `# Changelog`. Give each release one heading: `## <version> — <YYYY-MM-DD>`, or `## <version> — Unreleased` until it is released.
+- Under a heading, use only non-empty `### Added`, `### Changed`, `### Fixed` and `### Removed` groups. A first release opens with one plain sentence saying what the skill does and who uses it.
+- Write each entry as two lines, addressing the reader as "you":
 
-Worked example:
+  ```md
+  - **<Short name>.** <What is different for you now.> <Why it matters or what it prevents.>
+    Action: <What you must do to get this change or keep things working, or "None.">
+  ```
+
+  `Action:` names a required step, not a usage tip. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
+- Test each entry: give it alone to a model with no other context and ask what changed and whether you must act. The answer should match the change.
+
+Worked example, for an illustrative upload skill:
 
 ```md
 ## 0.2.0 — 2026-09-29
 
-### Added
-- **Release-note guidance.** Skill authors can record user-facing changes in grouped entries with an action line, so readers can understand updates without knowing the implementation.
+### Changed
+- **Sign-in during setup.** You now sign in to GitHub once during setup instead of at your first upload. Uploads no longer stop halfway to ask for a password.
+  Action: Run the setup command again after updating.
+
+### Fixed
+- **Large PDFs.** PDFs up to 10 MB now upload instead of timing out.
   Action: None.
 ```
 
