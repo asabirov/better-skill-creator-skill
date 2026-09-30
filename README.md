@@ -36,7 +36,8 @@ this skill, use the owner section below instead of installing another copy.
 The version source is `metadata.version` in [SKILL.md](SKILL.md). To update
 or roll back, record the tag you have now, then run the install command again
 with the selected release tag. Do not assume that `skills update` follows tags.
-Remove the skill with:
+This repo releases by hand: update the install line above when creating the
+release tag. Remove the skill with:
 
 ```sh
 DO_NOT_TRACK=1 npx skills remove better-skill-creator --agent claude-code codex --global
@@ -105,8 +106,6 @@ To remove it, confirm each agent link points to this submodule before unlinking 
 ## Maintenance and license
 
 Maintenance timing, versioning, and the required readable `CHANGELOG.md` format
-are defined in [SKILL.md](SKILL.md), including a worked entry example. This
-repo releases by hand: creating the release tag also updates the install line
-above to it, before publishing the GitHub release.
+are defined in [SKILL.md](SKILL.md), including a worked entry example.
 Record audits as issues in this repository; the skill does not schedule itself
 or store run state. This repository is licensed under the [MIT License](LICENSE).

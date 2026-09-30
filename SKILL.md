@@ -56,7 +56,7 @@ Worked example, for an illustrative upload skill:
 - **Large PDFs.** PDFs up to 10 MB now upload instead of timing out.
 ```
 
-For public repos, write one README install line for both agents using the actual repo, skill, and released tag, updated by whatever step creates that tag — the release workflow where one exists, otherwise a required part of the manual release. Don't run it over a skill already installed through the owner's managed configuration. Illustrative [skills CLI](https://github.com/vercel-labs/skills#readme) form ([ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts)):
+For public repos, write one README install line for both agents using the actual repo, skill, and released tag, updated in the same automated or manual step that creates the tag. Don't run it over a skill already installed through the owner's managed configuration. Illustrative [skills CLI](https://github.com/vercel-labs/skills#readme) form ([ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts)):
 
 ```sh
 DO_NOT_TRACK=1 npx skills add https://github.com/OWNER/REPO/tree/TAG --skill SKILL --agent claude-code codex --global
