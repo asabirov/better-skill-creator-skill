@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 — Unreleased
+
+### Changed
+
+- **Shorter changelog entries.** Changelog entries are now a bold name and one short sentence, with an `Action:` line only when you must act.
+
 ## 0.1.1 — 2026-09-30
 
 ### Added

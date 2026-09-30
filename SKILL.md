@@ -2,7 +2,7 @@
 name: better-skill-creator
 description: Create, edit, simplify, or audit an independently owned agent skill under the owner's rules. Use for changing or reviewing a skill the user owns. Not for installing a skill or for general agent policy.
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Better skill creator
@@ -38,7 +38,7 @@ Keep each created or versioned skill's `CHANGELOG.md` readable by someone who ha
 
 - Start the file with `# Changelog`. Give each release one heading: `## <version> — <YYYY-MM-DD>`, or `## <version> — Unreleased` until it is released.
 - Under a heading, use only non-empty `### Added`, `### Changed`, `### Fixed` and `### Removed` groups. A first release opens with one plain sentence saying what the skill does and who uses it, and must not say "now", "no longer", or otherwise imply an earlier version.
-- Write each entry as a bold short name, what changed for you, and why it matters or what it prevents, then, only if you must do something, an `Action:` line naming that required step (never a usage tip); address the person using the skill as "you", and describe what the skill or its agent does in the third person. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
+- Write each entry as a bold short name and one short sentence saying what changed for you, then, only if you must do something, an `Action:` line naming that required step (never a usage tip); address the person using the skill as "you", and describe what the skill or its agent does in the third person. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
 - Test each entry: give it alone to a model with no other context and ask what changed and whether you must act. The answer should match the change.
 
 Worked example, for an illustrative upload skill:
@@ -48,7 +48,7 @@ Worked example, for an illustrative upload skill:
 
 ### Changed
 
-- **Sign-in during setup.** You now sign in to GitHub once during setup instead of at your first upload. Uploads no longer stop halfway to ask for a password.
+- **Sign-in during setup.** You now sign in to GitHub once during setup instead of at your first upload.
   Action: Run the setup command again after updating.
 
 ### Fixed
