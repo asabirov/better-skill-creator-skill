@@ -105,6 +105,8 @@ To remove it, confirm each agent link points to this submodule before unlinking 
 ## Maintenance and license
 
 Maintenance timing, versioning, and the required readable `CHANGELOG.md` format
-are defined in [SKILL.md](SKILL.md), including a worked entry example.
+are defined in [SKILL.md](SKILL.md), including a worked entry example. This
+repo releases by hand: creating the release tag also updates the install line
+above to it, before publishing the GitHub release.
 Record audits as issues in this repository; the skill does not schedule itself
 or store run state. This repository is licensed under the [MIT License](LICENSE).
