@@ -6,6 +6,8 @@
 
 - **Shorter changelog entries.** Changelog entries are now a bold name and one short sentence, with an `Action:` line only when you must act.
 
+- **README tag tracks the release.** The skill now requires updating a public skill's README install line in the same step that creates its release tag.
+
 ## 0.1.1 — 2026-09-30
 
 ### Added

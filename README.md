@@ -36,7 +36,8 @@ this skill, use the owner section below instead of installing another copy.
 The version source is `metadata.version` in [SKILL.md](SKILL.md). To update
 or roll back, record the tag you have now, then run the install command again
 with the selected release tag. Do not assume that `skills update` follows tags.
-Remove the skill with:
+This repo releases by hand: update the install line above when creating the
+release tag. Remove the skill with:
 
 ```sh
 DO_NOT_TRACK=1 npx skills remove better-skill-creator --agent claude-code codex --global
