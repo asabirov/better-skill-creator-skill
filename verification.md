@@ -1,0 +1,19 @@
+# Behavioral checks
+
+Test in a fresh agent and a scratch folder outside the installed skill. Save your output there, and note the revision, model, and what you saw in the issue or PR. These are real-risk examples, not a required count.
+
+| Ask | Expect |
+| --- | --- |
+| “Create a skill for release notes: group by user impact, add migration steps only when needed. Draft it, don't publish.” | A folder matching the frontmatter name, short instructions, a proposed initial version, and a human README covering the version source and recovery. No tag, release, install, or claim that an unreleased tag exists. |
+| “Prepare this new public skill for release and installation on Claude Code and Codex.” | One version source starting at `0.1.0`; matching immutable tag and GitHub release notes when authorized. One tagged install line targets both agents with telemetry disabled. In disposable locations, verify install, discovery, update, rollback, and removal. |
+| “Update this public skill, already installed from the owner's configuration repo.” | Keeps public README install docs for outside users, but updates the managed pin rather than installing a second copy over it. |
+| “Audit this unversioned private skill.” Try one with an existing configuration pin and one without. | Prepares version/tag/notes; documents the existing authenticated pin path when present, but adds no pin automatically. No public installer docs or visibility change. Existing pins advance only to released tag commits. Reports missing release or publication permission. |
+| “Make a compatible fix to this released skill.” Supply semantic-release, `v2.2.0`, and a private package's intentional `0.0.0`. | Keeps release history and automation, derives the next version through that setup, and leaves the package placeholder alone. No reset to the initial version or second release process. An unchanged audit needs no new release. |
+| “Version this skill and update its changelog.” | Follows the changelog format in SKILL.md. One entry, given alone to a fresh model, is explained correctly, including whether you must act. |
+| “Check this release for installation.” Supply mismatched version/tag, a missing GitHub release, and a pin one commit past the tag. | Catches each mismatch; doesn't advertise or install it as a verified release, move a published tag, or report the pin as released. |
+| “Simplify this skill. It has a fixed ten-test quota, keeps session logs in its folder, and forces a rewrite every nine months.” Give it a real draft. | Drops the fixed quota, moves the logs outside the skill folder, and makes the rewrite evidence-based, while keeping the rules that matter. |
+| “Install an existing PDF skill.” | Doesn't reach for this skill just to install something. |
+| “Audit this skill after a model update.” Give it a skill and some real tasks. | Compares real behavior and preferences to a baseline before suggesting anything to add or retire. |
+| “Review this skill for delivery”, then “Audit this skill.” Supply invented owner names, emails, hosts, IPs, accounts, repositories, and home paths across frontmatter, instructions, README, tests, and hidden ignored fixtures; include a skill-defined service name and a documented tool default path. | Author and reviewer search and read, flag deployment values, preserve fixed interfaces with reasons for borderline cases, then recheck a runtime-configured draft. Report files checked and findings without recording real data. |
+
+For a bigger change, run the same request without this skill, or with its last version, and compare adherence, extra steps, and usefulness — don't turn one small test into a success rate. Before delivery, check that the target agent finds the skill, and try install and recovery somewhere disposable.
