@@ -4,7 +4,7 @@
 
 ### Changed
 
-- **A word budget for skill edits.** The skill now budgets each rule you add or change at 40 words of instructions, and asks you to cut any added sentence that doesn't stop a mistake.
+- **A word budget for skill edits.** The skill now holds each change to 40 words of growth in its main instruction file unless you show the extra words change what the agent does, and asks you to cut any added sentence that doesn't stop a mistake.
 
 ## 0.1.2 — 2026-09-30
 
