@@ -4,7 +4,7 @@
 
 ### Changed
 
-- **Fewer dependencies.** The skill now asks you to leave out another skill, tool, or service that your own skill's purpose doesn't need, or hand that step to the skill that owns it.
+- **Independent skills.** The skill now asks you to state what your skill needs as an input or outcome instead of naming, calling, or requiring another skill, or a tool or service its purpose doesn't need, and its audits flag each violation.
 
 - **A word budget for skill edits.** The skill now holds each change to 40 words of growth in its main instruction file unless you show the extra words change what the agent does, and asks you to cut any added sentence that doesn't stop a mistake.
 
