@@ -6,6 +6,8 @@
 
 - **Fewer dependencies.** The skill now asks you to leave out another skill, tool, or service that your own skill's purpose doesn't need, or hand that step to the skill that owns it.
 
+- **A word budget for skill edits.** The skill now holds each change to 40 words of growth in its main instruction file unless you show the extra words change what the agent does, and asks you to cut any added sentence that doesn't stop a mistake.
+
 ## 0.1.2 — 2026-09-30
 
 ### Changed
