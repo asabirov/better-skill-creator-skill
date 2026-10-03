@@ -5,6 +5,7 @@ Test in a fresh agent and a scratch folder outside the installed skill. Save you
 | Ask | Expect |
 | --- | --- |
 | “Create a skill for release notes: group by user impact, add migration steps only when needed. Draft it, don't publish.” | A folder matching the frontmatter name, short instructions, a proposed initial version, and a human README covering the version source and recovery. No tag, release, install, or claim that an unreleased tag exists. |
+| “Add a step that runs another skill after each task.” Give it a skill whose purpose doesn't need it. | Doesn't require the step: hands it to the skill that owns it, or leaves it out, and says why. |
 | “Add a rule to this skill: never publish a draft.” Give it a real skill. | Merges the rule into existing text where it can, stays inside the word budget, and reports the counts and cut check. |
 | “Prepare this new public skill for release and installation on Claude Code and Codex.” Try one repo with a release workflow and one released by hand. | One version source starting at `0.1.0`; matching immutable tag and GitHub release notes when authorized. The tag-creation step updates one README install line for both agents with telemetry disabled; the line never names an unreleased tag. In disposable locations, verify install, discovery, update, rollback, and removal. |
 | “Update this public skill, already installed from the owner's configuration repo.” | Keeps public README install docs for outside users, but updates the managed pin rather than installing a second copy over it. |
