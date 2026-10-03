@@ -4,7 +4,7 @@
 
 ### Changed
 
-- **Independent skills.** The skill now keeps your skill from naming, calling, or requiring another skill, or a tool or service its purpose doesn't need, stating the need as an input or outcome instead, and its audits flag each such mention.
+- **Independent skills.** The skill now asks you to state what your skill needs as an input or outcome instead of naming, calling, or requiring another skill, or a tool or service its purpose doesn't need, and its audits flag each violation.
 
 ## 0.1.2 — 2026-09-30
 
