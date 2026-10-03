@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3 — Unreleased
+
+### Changed
+
+- **Fewer dependencies per skill.** The skill now asks you to keep a skill's dependencies on other skills, tools, and services few, and to drop or hand off a step that needs an unrelated one.
+
 ## 0.1.2 — 2026-09-30
 
 ### Changed
