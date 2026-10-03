@@ -4,7 +4,7 @@
 
 ### Changed
 
-- **Fewer dependencies.** The skill now asks you to leave out another skill, tool, or service that your own skill's purpose doesn't need, or hand that step to the skill that owns it.
+- **Independent skills.** The skill now asks you to state what your skill needs as an input or outcome instead of naming, calling, or requiring another skill, or a tool or service its purpose doesn't need, and its audits flag each violation.
 
 ## 0.1.2 — 2026-09-30
 
