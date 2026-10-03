@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3 — Unreleased
+
+### Changed
+
+- **A word budget for skill edits.** The skill now budgets each rule you add or change at 40 words of instructions, and asks you to cut any added sentence that doesn't stop a mistake.
+
 ## 0.1.2 — 2026-09-30
 
 ### Changed

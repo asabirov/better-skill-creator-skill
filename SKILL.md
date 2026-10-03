@@ -2,7 +2,7 @@
 name: better-skill-creator
 description: Create, edit, simplify, or audit an independently owned agent skill under the owner's rules. Use for changing or reviewing a skill the user owns. Not for installing a skill or for general agent policy.
 metadata:
-  version: "0.1.2"
+  version: "0.1.3"
 ---
 
 # Better skill creator
@@ -68,7 +68,7 @@ Private repos need version/release details, not public installer docs. If a conf
 
 ## Verify the skill
 
-Match how much you check to the stakes, not a fixed count. Unit-test only script code that always behaves the same way. Check instructions and model output with real requests: judge the result, confirm it fires when it should, and stays quiet on look-alikes. When a description changes, test a handful of likely phrasings, a few tries each, and note which ones route to the skill. Before the text claims it saves, enforces, or persists something, confirm the runtime can actually reach that mechanism. For a bigger change, compare against the old version or no skill, watching for extra actions, not just final output. Keep reusable checks with the skill; run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks. Each PR reports word counts before and after; growth needs evidence that the added text changes behavior.
+Match how much you check to the stakes, not a fixed count. Unit-test only script code that always behaves the same way. Check instructions and model output with real requests: judge the result, confirm it fires when it should, and stays quiet on look-alikes. When a description changes, test a handful of likely phrasings, a few tries each, and note which ones route to the skill. Before the text claims it saves, enforces, or persists something, confirm the runtime can actually reach that mechanism. For a bigger change, compare against the old version or no skill, watching for extra actions, not just final output. Keep reusable checks with the skill; run artifacts outside the installed copy. See [verification.md](verification.md) for this skill's checks. Each PR reports word counts before and after; keep each rule added or changed within 40 net SKILL.md words, and more needs evidence the extra text changes behavior. Before committing, cut each added sentence whose removal loses no rule the agent would otherwise get wrong.
 
 A draft or audit doesn't authorize publishing or installing it. The default delivery workflow is: claim the issue, open a PR, run the checks above, get an independent review answering “what here can be removed or merged?”, fix every finding, merge, release, install the released revision, then verify it in the target agent. If no other model can review, say so and use the best available. Use the owner's repository naming, visibility, and delivery conventions; the defaults are one private `<skill>-skill` repo per skill and the workflow above. After delivery, confirm the target agent finds and runs the expected revision — it isn't done until it works there.
 
