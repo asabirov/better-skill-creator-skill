@@ -4,7 +4,7 @@
 
 ### Changed
 
-- **Fewer dependencies per skill.** The skill now asks you to keep a skill's dependencies on other skills, tools, and services few, and to drop or hand off a step that needs an unrelated one.
+- **Fewer dependencies.** The skill now asks you to leave out another skill, tool, or service that your own skill's purpose doesn't need, or hand that step to the skill that owns it.
 
 ## 0.1.2 — 2026-09-30
 
