@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3 — Unreleased
+
+### Changed
+
+- **Fewer dependencies.** The skill now asks you to leave out another skill, tool, or service that your own skill's purpose doesn't need, or hand that step to the skill that owns it.
+
 ## 0.1.2 — 2026-09-30
 
 ### Changed
