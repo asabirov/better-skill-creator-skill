@@ -4,7 +4,7 @@
 
 ### Changed
 
-- **Dependency lists hold only outside dependencies.** The skill now keeps your dependency list — a file for people, not for the agent to read — to the outside tools, libraries and skills your skill needs, each with when it is needed, and moves your skill's own formats, paths and reasoning to where they are used.
+- **Shorter dependency lists.** Your dependency list now holds only external tools, libraries, and skills, and the formats and paths your skill defines belong with the steps that use them.
 
 ## 0.1.3 — 2026-10-03
 
