@@ -6,6 +6,8 @@
 
 - **Shorter dependency lists.** Your dependency list now holds only external tools, libraries, and skills, and the formats and paths your skill defines belong with the steps that use them.
 
+- **No tracker references.** The skill now asks you to keep issue and pull request numbers and links out of your skill's description, body, and changelog, and to say what changed and why in plain words instead.
+
 ## 0.1.3 — 2026-10-03
 
 ### Changed
