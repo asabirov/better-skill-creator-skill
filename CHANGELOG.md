@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4 — Unreleased
+
+### Changed
+
+- **Shorter dependency lists.** Your dependency list now holds only external tools, libraries, and skills, and the formats and paths your skill defines belong with the steps that use them.
+
 ## 0.1.3 — 2026-10-03
 
 ### Changed

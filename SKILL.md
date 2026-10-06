@@ -2,7 +2,7 @@
 name: better-skill-creator
 description: Create, edit, simplify, or audit an independently owned agent skill under the owner's rules. Use for changing or reviewing a skill the user owns. Not for installing a skill or for general agent policy.
 metadata:
-  version: "0.1.3"
+  version: "0.1.4"
 ---
 
 # Better skill creator
@@ -22,7 +22,7 @@ A skill holds reusable knowledge or preferences — not every lesson, policy, ta
 - `SKILL.md` holds agent instructions; `README.md` holds human usage, install, update, rollback, and removal steps. Use Mermaid only for a real decision, handoff, or set of states, never as a second rulebook.
 - Treat the installed folder as read-only; keep logs, caches, and other output outside it. If the skill must remember something between runs, say what and where, and edit source through the repo's workflow.
 - Prefer existing tools; add a tool or service only when it's more reliable or saves more build-and-maintain work than doing it yourself, and say so. Don't depend on machine-specific paths, or require a tool or service that the skill's purpose doesn't need; leave that step out.
-- Keep each skill independent: nothing an agent reads in it, description included, names, invokes, requires, or reads files of another skill. State needs as inputs or outcomes, such as "a reviewed draft"; an orchestration layer above the skills composes them. Audits flag each violation with file and line.
+- Keep each skill independent: nothing an agent reads in it, description included, names, invokes, requires, or reads files of another skill. State needs as inputs or outcomes, such as "a reviewed draft"; an orchestration layer above the skills composes them. List external dependencies once, for people, not the agent: `README.md` or `DEPENDENCIES.md` holds only tools, libraries and the skills an orchestration layer supplies, each with when it's needed; the skill's own formats, paths and reasons live where they're used. Audits flag each violation with file and line.
 - Exclude secrets and hard-coded user/install data from instructions, examples, tests, and commits: names, emails, machines, hosts, IPs, accounts, repositories. Use runtime settings, roles, or made-up examples; fixed interface names and documented tool defaults may stay. Instructions grant no permission; explain stopping and recovery from outside changes.
 
 ## Check data before delivery
