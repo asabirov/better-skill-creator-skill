@@ -24,7 +24,7 @@ the skill works. This repository has no runtime packages or scripts.
 Install the tagged skill for Claude Code and Codex with:
 
 ```sh
-DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/better-skill-creator-skill/tree/v0.1.3 --skill better-skill-creator --agent claude-code codex --global
+DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/better-skill-creator-skill/tree/v0.1.4 --skill better-skill-creator --agent claude-code codex --global
 ```
 
 `DO_NOT_TRACK=1` turns off [skills CLI telemetry](https://github.com/vercel-labs/skills#telemetry).
