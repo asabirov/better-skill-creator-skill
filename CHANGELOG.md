@@ -4,7 +4,9 @@
 
 ### Added
 
-- **Project skills.** When it makes a skill, the skill asks which projects use it, keeps a skill that only one project uses inside that project's repo until a second project needs it, and its audits flag a skill repo that only one project uses.
+- **Project skills.** The skill now asks which projects use your new skill, and keeps it in that project's repo while only one project uses it.
+
+- **Single-project repo check.** Your audits now flag a skill repo that only one project uses.
 
 ## 0.1.4 — 2026-10-06
 
