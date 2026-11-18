@@ -22,7 +22,7 @@ the skill works. This repository has no runtime packages or scripts.
 | [verification.md](verification.md) | Trial requests and expected behavior |
 | [README.md](README.md) | Installation, use and recovery |
 
-## Install, update, roll back, and remove
+## Install, update, and remove
 
 Install the latest version:
 
@@ -44,12 +44,11 @@ installing another copy.
 | Dependency | Why |
 | --- | --- |
 | Node.js and npm | `npx skills` runs the installer |
-| Git | The installer fetches the tagged release |
+| Git | The installer fetches the repository |
 | An agent that supports the [Agent Skills format](https://agentskills.io/specification) | The agent loads `SKILL.md` |
 | GitHub access | The skill delivers changes through branches, PRs and releases |
 
 The version source is `metadata.version` in [SKILL.md](SKILL.md).
-Do not assume that `skills update` follows tags.
 Remove the skill with:
 
 ```sh
