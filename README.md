@@ -24,13 +24,20 @@ the skill works. This repository has no runtime packages or scripts.
 
 ## Install, update, roll back, and remove
 
-Install the tagged skill for Claude Code and Codex with:
+Install the latest version:
 
 ```sh
-DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/better-skill-creator-skill/tree/v0.1.4 --skill better-skill-creator --agent claude-code codex --global
+DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/better-skill-creator-skill --skill better-skill-creator --agent claude-code codex --global
 ```
 
-`DO_NOT_TRACK=1` turns off [skills CLI telemetry](https://github.com/vercel-labs/skills#telemetry).
+Update it later:
+
+```sh
+DO_NOT_TRACK=1 npx skills update better-skill-creator --global
+```
+
+`DO_NOT_TRACK=1` turns off the telemetry of the skills CLI. The CLI needs Node.js, npm and Git.
+
 If your configuration already manages this skill, update it there instead of
 installing another copy.
 
@@ -41,9 +48,8 @@ installing another copy.
 | An agent that supports the [Agent Skills format](https://agentskills.io/specification) | The agent loads `SKILL.md` |
 | GitHub access | The skill delivers changes through branches, PRs and releases |
 
-The version source is `metadata.version` in [SKILL.md](SKILL.md). To update
-or roll back, record the tag you have now, then run the install command again
-with the selected release tag. Do not assume that `skills update` follows tags.
+The version source is `metadata.version` in [SKILL.md](SKILL.md).
+Do not assume that `skills update` follows tags.
 Remove the skill with:
 
 ```sh
