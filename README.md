@@ -27,7 +27,7 @@ the skill works. This repository has no runtime packages or scripts.
 Install the latest version:
 
 ```sh
-DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/better-skill-creator-skill --skill better-skill-creator --agent claude-code codex --global
+DO_NOT_TRACK=1 npx skills add https://github.com/asabirov/better-skill-creator-skill --skill better-skill-creator --agent claude-code codex --global -y
 ```
 
 Update it later:
@@ -52,7 +52,7 @@ The version source is `metadata.version` in [SKILL.md](SKILL.md).
 Remove the skill with:
 
 ```sh
-DO_NOT_TRACK=1 npx skills remove better-skill-creator --agent claude-code codex --global
+DO_NOT_TRACK=1 npx skills remove better-skill-creator --agent claude-code codex --global -y
 ```
 
 After any change, check discovery in a fresh agent session.
