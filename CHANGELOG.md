@@ -8,6 +8,10 @@
 
 - **Single-project repo check.** Your audits now flag a skill repo that only one project uses.
 
+### Changed
+
+- **Rules need a reason.** The skill now adds a rule, limit or step to your skill only for an observed failure, your request or a cited source, and its review asks for that reason.
+
 ## 0.1.4 — 2026-10-06
 
 ### Changed
