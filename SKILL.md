@@ -23,7 +23,7 @@ A skill holds reusable knowledge or preferences — not every lesson, policy, ta
 - Treat the installed folder as read-only; keep logs, caches, and other output outside it. If the skill must remember something between runs, say what and where, and edit source through the repo's workflow.
 - Prefer existing tools; add a tool or service only when it's more reliable or saves more build-and-maintain work than doing it yourself, and say so. Don't depend on machine-specific paths, or require a tool or service that the skill's purpose doesn't need; leave that step out.
 - Keep each skill independent: nothing an agent reads in it, description included, names, invokes, requires, or reads files of another skill. State needs as inputs or outcomes, such as "a reviewed draft"; an orchestration layer above the skills composes them. List external dependencies once, for people, not the agent: `README.md` or `DEPENDENCIES.md` holds only tools, libraries and the skills an orchestration layer supplies, each with when it's needed; the skill's own formats, paths and reasons live where they're used. Audits flag each violation with file and line.
-- Exclude secrets and hard-coded user/install data from instructions, examples, tests, and commits: names, emails, machines, hosts, IPs, accounts, repositories. Use runtime settings, roles, or made-up examples; fixed interface names and documented tool defaults may stay. Keep tracker references out of the skill: no issue, PR, or ticket numbers or links in its description, body, or changelog; state the change and its reason in plain words instead. Instructions grant no permission; explain stopping and recovery from outside changes.
+- Exclude secrets and hard-coded user/install data from instructions, examples, tests, and commits: names, emails, machines, hosts, IPs, accounts, repositories. Use runtime settings, roles, or made-up examples; fixed interface names and documented tool defaults may stay. Keep tracker references out of the skill: no issue, PR, or ticket numbers or links in its description or body; state the change and its reason in plain words instead. Instructions grant no permission; explain stopping and recovery from outside changes.
 
 ## Check data before delivery
 
@@ -39,7 +39,7 @@ Keep each created or versioned skill's `CHANGELOG.md` readable by someone who ha
 
 - Start the file with `# Changelog`. Give each release one heading: `## <version> — <YYYY-MM-DD>`, or `## <version> — Unreleased` until it is released.
 - Under a heading, use only non-empty `### Added`, `### Changed`, `### Fixed` and `### Removed` groups. A first release opens with one plain sentence saying what the skill does and who uses it, and must not say "now", "no longer", or otherwise imply an earlier version.
-- Write each entry as a bold short name and one short sentence saying what changed for you, then, only if you must do something, an `Action:` line naming that required step (never a usage tip); address the person using the skill as "you", and describe what the skill or its agent does in the third person. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver.
+- Write each entry as a bold short name and one short sentence saying what changed for you, then, only if you must do something, an `Action:` line naming that required step (never a usage tip); address the person using the skill as "you", and describe what the skill or its agent does in the third person. Use plain words, explain an unavoidable term in brackets, and leave out internal jargon, file paths and script names the reader would not run. Claim nothing the skill does not deliver. End each entry's sentence with a link to its PR. Never use an issue number alone.
 - Test each entry: give it alone to a model with no other context and ask what changed and whether you must act. The answer should match the change.
 
 Worked example, for an illustrative upload skill:
@@ -49,12 +49,12 @@ Worked example, for an illustrative upload skill:
 
 ### Changed
 
-- **Sign-in during setup.** You now sign in to GitHub once during setup instead of at your first upload.
+- **Sign-in during setup.** You now sign in to GitHub once during setup instead of at your first upload. ([PR](https://github.com/OWNER/REPO/pull/N))
   Action: Run the setup command again after updating.
 
 ### Fixed
 
-- **Large PDFs.** PDFs up to 10 MB now upload instead of timing out.
+- **Large PDFs.** PDFs up to 10 MB now upload instead of timing out. ([PR](https://github.com/OWNER/REPO/pull/N))
 ```
 
 For public repos, write one README install line for both agents using the actual repo, skill, and released tag, updated in the same automated or manual step that creates the tag. Don't run it over a skill already installed through the owner's managed configuration. Illustrative [skills CLI](https://github.com/vercel-labs/skills#readme) form ([ref parser](https://github.com/vercel-labs/skills/blob/main/src/source-parser.ts)):
@@ -75,4 +75,4 @@ A draft or audit doesn't authorize publishing or installing it. The default deli
 
 ## Maintain it
 
-After each significant change, review the whole skill and look for anything to simplify, merge, or remove. Also review it after a model or tool change or an observed failure. Mark example output as illustrative, or regenerate it from a real run, before shipping. Base a rewrite on evidence, not elapsed time. Keep review dates and evidence in GitHub, outside the installed skill.
+After each significant change, review the whole skill and look for anything to simplify, merge, or remove. Audits also check: copied context that a pointer can replace, one trigger for each branch, a leading word for a repeated phrase, each sentence that changes nothing against the model's default, and each prohibition that can become its positive target. Also review it after a model or tool change or an observed failure. Mark example output as illustrative, or regenerate it from a real run, before shipping. Base a rewrite on evidence, not elapsed time. Keep review dates and evidence in GitHub, outside the installed skill.
