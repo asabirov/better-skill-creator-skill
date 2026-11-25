@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 — Unreleased
+
+### Changed
+
+- **PR links in changelogs.** Each changelog entry that the skill writes for you now ends with a link to its PR, and audits no longer flag those links. PRLINK
+
 ## 0.1.5 — 2026-11-20
 
 ### Added
