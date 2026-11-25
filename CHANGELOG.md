@@ -4,7 +4,7 @@
 
 ### Added
 
-- **Pruning checks in audits.** Your audits now also look for copied context that a pointer can replace, repeated triggers, phrases that one familiar word can replace, sentences that change nothing, and bans that can be stated as the wanted behaviour. PRLINK
+- **Pruning checks in audits.** Your audits now also look for copied context that a pointer can replace, repeated triggers, phrases that one familiar word can replace, sentences that change nothing, and bans that can be stated as the wanted behaviour. ([PR](https://github.com/asabirov/better-skill-creator-skill/pull/70))
 
 ### Changed
 
