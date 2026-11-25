@@ -75,4 +75,4 @@ A draft or audit doesn't authorize publishing or installing it. The default deli
 
 ## Maintain it
 
-After each significant change, review the whole skill and look for anything to simplify, merge, or remove. Also review it after a model or tool change or an observed failure. Mark example output as illustrative, or regenerate it from a real run, before shipping. Base a rewrite on evidence, not elapsed time. Keep review dates and evidence in GitHub, outside the installed skill.
+After each significant change, review the whole skill and look for anything to simplify, merge, or remove. Audits also check: copied context that a pointer can replace, one trigger for each branch, a leading word for a repeated phrase, each sentence that changes nothing against the model's default, and each prohibition that can become its positive target. Also review it after a model or tool change or an observed failure. Mark example output as illustrative, or regenerate it from a real run, before shipping. Base a rewrite on evidence, not elapsed time. Keep review dates and evidence in GitHub, outside the installed skill.

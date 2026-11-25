@@ -2,6 +2,10 @@
 
 ## 0.2.0 — Unreleased
 
+### Added
+
+- **Pruning checks in audits.** Your audits now also look for copied context that a pointer can replace, repeated triggers, phrases that one familiar word can replace, sentences that change nothing, and bans that can be stated as the wanted behaviour. PRLINK
+
 ### Changed
 
 - **PR links in changelogs.** Each changelog entry that the skill writes for you now ends with a link to its PR, and audits no longer flag those links. ([PR](https://github.com/asabirov/better-skill-creator-skill/pull/69))
